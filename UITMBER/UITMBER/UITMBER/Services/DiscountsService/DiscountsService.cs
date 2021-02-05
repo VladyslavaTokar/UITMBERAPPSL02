@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using UITMBER.Models.Discounts;
 using UITMBER.Services.Request;
 using Xamarin.Forms;
 
@@ -19,10 +20,10 @@ namespace UITMBER.Services.DiscountsService
             return true;
         }
 
-        public async Task<IActionResult> Verify(string code)
+        public async Task<VerifyDiscountResultDto> Verify(string code)
         {
             var url = $"{Settings.SERVER_ENDPOINT}/Discounts/Verify";
-            var data = await _requestService.GetAsync<IActionResult>(url);
+            var data = await _requestService.GetAsync<VerifyDiscountResultDto>(url);
 
             return data;
         }
